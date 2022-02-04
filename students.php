@@ -299,7 +299,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table>
+              <table class="table table-bordered table-hover">
                   <thead>
                       <tr>
                           <th>Name</th>
@@ -324,13 +324,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </table>
               <form method="post" action="server.php" >
               <input type="hidden" name="id" value="<?php echo $id; ?>">
-              <div class="input-group">
-                <label>Name</label>
-                <input type="text" name="name" value="<?php echo $name; ?>">
+              <div class="input-group m-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
               </div>
-              <div class="input-group">
-                <label>Address</label>
-                <input type="text" name="address" value="<?php echo $address; ?>">
+              <div class="input-group m-3">
+                <label class="form-label">Address</label>
+                <input type="text" name="address" class="form-control" value="<?php echo $address; ?>">
               </div>
               <div class="input-group">
 
