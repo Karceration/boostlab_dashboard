@@ -19,8 +19,27 @@
 		header('location: students.php');
 	}
 
+  //PAGINATION START
+  //Get the current page number
+
+  if (isset($_GET['pageno'])) {
+    $pageno = $_GET['pageno'];
+  } else {
+    $pageno = 1;
+  }
+
+  $no_of_records_per_page = 4;
+  $offset = ($pageno-1) * $no_of_records_per_page;
+
+  $total_pages_sql = "SELECT COUNT(*) FROM info";
+
+  $total_pages = ceil(12 / $no_of_records_per_page);
+
+
+
 	//RETRIEVE
-	$results = mysqli_query($db, "SELECT * FROM info");
+	$results = mysqli_query($db, "SELECT * FROM info LIMIT $offset, $no_of_records_per_page");
+  //PAGINATION END
 
 	//update
 	if (isset($_POST['update'])) {

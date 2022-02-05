@@ -325,6 +325,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <?php } ?>
                   </tbody>
               </table>
+
+              <ul class="pagination">
+                  <li class="m-3"><a href="?pageno=1">First</a></li>
+                  <li class="m-3" class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                      <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+                  </li>
+                  <li class="m-3" class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                      <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+                  </li>
+                  <li class="m-3"><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+              </ul>
+
               <form method="post" action="server.php" >
               <input type="hidden" name="id" value="<?php echo $id; ?>">
               <div class="input-group m-3">
