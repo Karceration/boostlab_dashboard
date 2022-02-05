@@ -48,6 +48,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- datatables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" ></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -299,7 +302,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table class="table table-bordered table-hover">
+              <table id="myTable" class="table table-bordered table-hover">
                   <thead>
                       <tr>
                           <th>Name</th>
@@ -416,6 +419,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
 </body>
 </html>
 
