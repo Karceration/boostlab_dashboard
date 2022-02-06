@@ -18,6 +18,7 @@
 		$_SESSION['message'] = "Address saved";
 		header('location: students.php');
 	}
+	
 
   //PAGINATION START
   //Get the current page number
@@ -40,6 +41,9 @@
 	//RETRIEVE
 	$results = mysqli_query($db, "SELECT * FROM info LIMIT $offset, $no_of_records_per_page");
   //PAGINATION END
+
+
+
 
 	//update
 	if (isset($_POST['update'])) {
