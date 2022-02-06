@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boostlab | Starter</title>
+  <title>Boostlab | Contact</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
+
   <?php include ('navbar.php')?>
 
   <?php include ('main_sidebar.html')?>
@@ -45,12 +45,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Contact</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Contact</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -61,70 +61,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>142</h3>
-
-                <p>Students</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>2</h3>
-
-                <p>Courses</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-chalkboard"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>5</h3>
-
-                <p>Trainers</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-user-tie"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>12</h3>
-
-                <p>Personnel</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
         <!-- /.row -->
+        <div class="card">
+          <div class="card-body row">
+            <div class="col-5 text-center d-flex align-items-center justify-content-center">
+              <div class="">
+                <h2>Boost<strong>Lab</strong></h2>
+                <p class="lead mb-5">l Victoria Im Hajer, 1053 Berges du Lac 1053 Tunis, Tunisie
+                </p>
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="text" id="inputName" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="inputEmail">E-Mail</label>
+                <input type="email" id="inputEmail" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="inputSubject">Subject</label>
+                <input type="text" id="inputSubject" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="inputMessage">Message</label>
+                <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Send message">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
 
         <!-- /.row -->
       </div><!-- /.container-fluid -->
