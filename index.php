@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
+
   <?php include ('navbar.php')?>
 
   <?php include ('main_sidebar.html')?>
@@ -143,15 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
   <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      BoostLab
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Boostlab</a>.</strong> All rights reserved.
-  </footer>
+  <?php include ('footer.php')?>
 </div>
 <!-- ./wrapper -->
 
