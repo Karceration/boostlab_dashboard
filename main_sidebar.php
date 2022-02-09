@@ -83,13 +83,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="allusers.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>parametrage user </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="allroles.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>parametrage role</p>
               </a>

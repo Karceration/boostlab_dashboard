@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boostlab | Starter</title>
+  <title>Boostlab | Roles</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -40,96 +40,87 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>142</h3>
-
-                <p>Students</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+  <div class="col-12 col-sm-12">
+    <div class="card card-warning card-tabs">
+      <div class="card-header p-0 pt-1">
+        <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+          <li class="pt-2 px-3"><h3 class="card-title">Roles</h3></li>
+          <li class="nav-item">
+            <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">All Roles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Modif Roles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Tab 3 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Tab 4 </a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="custom-tabs-two-tabContent">
+          <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+          <table id="example2" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>Roles</th>
+                <th>Membres</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Admin</td>
+                <td>
+                  <ul>
+                    <li>Membre 1</li>
+                  </ul>
+              </td>
+              </tr>
+              <tr>
+                <td>Moderateur</td>
+                <td><ul>
+                    <li>Membre 1</li>
+                    <li>Membre 1</li>
+                    <li>Membre 1</li>
+                  </ul></td>
+              </tr>
+              <tr>
+                <td>Equipe interne</td>
+                <td><ul>
+                    <li>Membre 1</li>
+                    <li>Membre 1</li>
+                    <li>Membre 1</li>
+                  </ul></td>
+              </tr>
+              <tr>
+                <td>Utilisateur</td>
+                <td><ul>
+                    <li>Membre 1</li>
+                    <li>Membre 2</li>
+                    <li>Membre 3</li>
+                  </ul></td>
+              </tr>
+              </tfoot>
+            </table>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>2</h3>
+          <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
 
-                <p>Courses</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-chalkboard"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>5</h3>
 
-                <p>Trainers</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-user-tie"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>12</h3>
+          <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
 
-                <p>Personnel</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+
           </div>
-          <!-- ./col -->
+          <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
+
+
+          </div>
         </div>
-        <!-- /.row -->
-
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.card -->
     </div>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -143,8 +134,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
   <!-- /.control-sidebar -->
 
-  <?php include ('footer.php')?>
+
 </div>
+<?php include ('footer.php')?>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
