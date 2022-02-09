@@ -1,3 +1,23 @@
+<?php  include('boostdb.php');
+
+//recuperer la ligne pour l'update
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update = true;
+    $record = mysqli_query($db, "SELECT * FROM zboostuser WHERE id=$id");
+
+    if (count($record) == 1 ) {
+        $n = mysqli_fetch_array($record);
+        $nom= $n['nom'];
+        $prenom = $n['prenom'];
+        $email = $n['email'];
+        $password = $n['password'];
+        $id = $n ['id'];
+    }
+}
+
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -36,49 +56,109 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <?php include ('navbar.php')?>
 
-  <?php include ('main_sidebar.html')?>
+  <?php include ('main_sidebar.php')?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  <div class="col-12 col-sm-6">
-    <div class="card card-primary card-tabs">
-      <div class="card-header p-0 pt-1">
-        <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-          <li class="pt-2 px-3"><h3 class="card-title">Card Title</h3></li>
-          <li class="nav-item">
-            <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Settings</a>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body">
-        <div class="tab-content" id="custom-tabs-two-tabContent">
-          <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Users</h1>
           </div>
-          <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-              Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-          </div>
-          <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
-              Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-          </div>
-          <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
-              Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Users</li>
+            </ol>
           </div>
         </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Users</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <table id="myTable" class="table table-bordered table-hover">
+                  <thead>
+                      <tr>
+                          <th>Nom</th>
+                          <th>Prenom</th>
+                          <th>Email</th>
+                          <th colspan="2">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <?php while ($row = mysqli_fetch_array($results)) { ?>
+                      <tr>
+                          <td><?php echo $row['nom']; ?></td>
+                          <td><?php echo $row['prenom']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                          <td>
+                              <a class="edit_btn" href="allusers.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                          </td>
+                          <td>
+                              <a class="del_btn" href="boostdb.php?del=<?php echo $row['id']; ?>">Delete</a>
+                          </td>
+                      </tr>
+                      <?php } ?>
+                  </tbody>
+              </table>
+              <form method="post" action="boostdb.php" >
+              <input type="hidden" name="id" value="<?php echo $id; ?>">
+              <div class="input-group m-3">
+                <label class="form-label">Nom</label>
+                <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>">
+              </div>
+              <div class="input-group m-3">
+                <label class="form-label">Prenom</label>
+                <input type="text" name="prenom" class="form-control" value="<?php echo $prenom ?>">
+              </div>
+              <div class="input-group m-3">
+                <label class="form-label">email</label>
+                <input type="email" name="email" class="form-control" value="<?php echo $email ?>">
+              </div>
+              <div class="input-group m-3">
+                <label class="form-label">password</label>
+                <input type="password" name="password" class="form-control" value="<?php echo $password ?>">
+              </div>
+              <div class="input-group">
+                  <?php if ($update == false): ?>
+                      <button class="btn" type="submit" name="save" >Save</button>
+                  <?php else: ?>
+                      <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+                  <?php endif ?>
+              </div>
+            </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
       </div>
-      <!-- /.card -->
-    </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
