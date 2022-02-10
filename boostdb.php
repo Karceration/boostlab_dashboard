@@ -9,6 +9,8 @@
 	$prenom = "";
   $email = "";
   $password = "";
+  $datemodif="";
+  $datecre="";
 	$id = 0;
 	$update = false;
 
@@ -17,8 +19,13 @@
 		$prenom = $_POST['prenom'];
     $email = $_POST['email'];
 		$password = $_POST['password'];
+    $datecre = date('Y-m-d');
 
-		mysqli_query($db, "INSERT INTO zboostuser (nom , prenom , email , password) VALUES ('$nom', '$prenom','$email', '$password')");
+
+
+
+		mysqli_query($db, "INSERT INTO zboostuser (nom , prenom , email , password , DateCreation ) VALUES ('$nom', '$prenom','$email', '$password','$datecre')");
+
 		$_SESSION['message'] = "user saved";
 		header('location: allusers.php');
 	}
@@ -58,9 +65,10 @@
 		$prenom = mysql_real_escape_string($_POST['prenom']);
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
+    $datemodif=date('Y-m-d');
 
 
-		mysqli_query($db, "UPDATE zboostuser SET nom='$nom', prenom='$prenom', email='$email' , password='$password' WHERE id=$id");
+		mysqli_query($db, "UPDATE zboostuser SET nom='$nom', prenom='$prenom', email='$email' , password='$password' , DateDernModif = '$datemodif' WHERE id=$id");
 		$_SESSION['message'] = "user updated!";
 		header('location: allusers.php');
 	}
