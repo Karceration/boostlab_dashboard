@@ -50,6 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script defer src="validation_user.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -114,32 +115,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <?php } ?>
                   </tbody>
               </table>
-              <form method="post" action="boostdb.php" >
-              <input type="hidden" name="id" value="<?php echo $id; ?>">
-              <div class="input-group m-3">
-                <label class="form-label">Nom</label>
-                <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>">
+              <!-- general form elements -->
+            <div class="card card-warning m-3">
+              <div class="card-header">
+                <h3 class="card-title">Users Management</h3>
               </div>
-              <div class="input-group m-3">
-                <label class="form-label">Prenom</label>
-                <input type="text" name="prenom" class="form-control" value="<?php echo $prenom ?>">
-              </div>
-              <div class="input-group m-3">
-                <label class="form-label">email</label>
-                <input type="email" name="email" class="form-control" value="<?php echo $email ?>">
-              </div>
-              <div class="input-group m-3">
-                <label class="form-label">password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password ?>">
-              </div>
-              <div class="input-group">
-                  <?php if ($update == false): ?>
-                      <button class="btn" type="submit" name="save" >Save</button>
-                  <?php else: ?>
-                      <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
-                  <?php endif ?>
-              </div>
-            </form>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div id="error" class="text-danger m-3 text-bold"></div>
+              <form id="form" method="post" action="boostdb.php">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label">Nom</label>
+                    <input type="text" id="nom" name="nom" class="form-control" value="<?php echo $nom; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Prenom</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control" value="<?php echo $prenom ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email"  value="<?php echo $email ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" value="<?php echo $password ?>">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <div class="input-group">
+                    <?php if ($update == false): ?>
+                        <button class="btn" type="submit" name="save" >Save</button>
+                    <?php else: ?>
+                        <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+                    <?php endif ?>
+                </div>
+                </div>
+              </form>
+
               </div>
               <!-- /.card-body -->
             </div>
