@@ -2,7 +2,7 @@ const nom = document.getElementById('nom')
 const prenom = document.getElementById('prenom')
 const password = document.getElementById('password')
 
-const form = document.getElementById('form')
+const form_users = document.getElementById('form_users')
 const errorElement = document.getElementById('error')
 
 form.addEventListener('submit', (e) => {
@@ -16,11 +16,11 @@ form.addEventListener('submit', (e) => {
   }
 
   if (password.value.length <= 6) {
-    messages.push('Password must be longer than 6 characters')
+    messages.push('Password trop court')
   }
 
   if (password.value.length >= 20) {
-    messages.push('Password must be less than 20 characters')
+    messages.push('Password trop long')
   }
 
 

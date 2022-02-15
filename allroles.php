@@ -1,3 +1,20 @@
+<?php  include('boostdb_roles.php');
+
+//recuperer la ligne pour l'update
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update = true;
+    $record = mysqli_query($db, "SELECT * FROM zboostrole WHERE id=$id");
+
+    if (count($record) == 1 ) {
+        $n = mysqli_fetch_array($record);
+        $NomRole= $n['NomRole'];
+        $id = $n['id'];
+    }
+}
+
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -62,58 +79,79 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="card-body">
         <div class="tab-content" id="custom-tabs-two-tabContent">
           <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-          <table id="example2" class="table table-bordered table-hover">
-              <thead>
-              <tr>
-                <th>Roles</th>
-                <th>Membres</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Admin</td>
-                <td>
-                  <ul>
-                    <li>Membre 1</li>
-                  </ul>
-              </td>
-              </tr>
-              <tr>
-                <td>Moderateur</td>
-                <td><ul>
-                    <li>Membre 1</li>
-                    <li>Membre 1</li>
-                    <li>Membre 1</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>Equipe interne</td>
-                <td><ul>
-                    <li>Membre 1</li>
-                    <li>Membre 1</li>
-                    <li>Membre 1</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>Utilisateur</td>
-                <td><ul>
-                    <li>Membre 1</li>
-                    <li>Membre 2</li>
-                    <li>Membre 3</li>
-                  </ul></td>
-              </tr>
-              </tfoot>
-            </table>
+            <div class="col-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nom Role</th>
+                            <th class="text-center">Membres</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($row = mysqli_fetch_array($results)) { ?>
+                        <tr>
+                            <td><?php echo $row['NomRole']; ?></td>
+                            <td><ul>
+                              <li>Membre 1</li>
+                              <li>Membre 2</li>
+                              <li>Membre 3</li>
+                            </ul></td>
+                            <td>
+                                <a class="edit_btn" href="allroles.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            </td>
+                            <td>
+                                <a class="del_btn" href="boostdb_roles.php?del=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
           </div>
           <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-
+            <div class="card card-warning m-3">
+                <div class="card-header">
+                  <h3 class="card-title">Roles Management</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div id="error" class="text-danger m-3 text-bold"></div>
+                <form id="form" method="post" action="boostdb_roles.php">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <input type="hidden" name="id" value="<?php echo $id; ?>">
+                      <label class="form-label">Nom Role</label>
+                      <input type="text" id="NomRole" name="NomRole" class="form-control" value="<?php echo $NomRole; ?>">
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <div class="input-group">
+                      <?php if ($update == false): ?>
+                          <button class="btn" type="submit" name="save" >Save</button>
+                      <?php else: ?>
+                          <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
+                      <?php endif ?>
+                      <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
+                  </div>
+                  </div>
+                </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
 
           </div>
+
           <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
 
 
+
           </div>
+
           <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
+
 
 
           </div>

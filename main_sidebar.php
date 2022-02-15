@@ -99,7 +99,7 @@
         <li class="nav-header">Subtitle</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
+            <i class="nav-icon far fa-circle text-warning"></i>
             <p>
               Item1
             </p>
@@ -107,7 +107,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon far fa-image"></i>
+            <i class="nav-icon far fa-circle text-warning"></i>
             <p>
               Item2
             </p>
@@ -115,7 +115,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
+            <i class="nav-icon far fa-circle text-warning"></i>
             <p>
               Item3
             </p>
@@ -124,13 +124,13 @@
         <li class="nav-header">MISCELLANEOUS</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-ellipsis-h"></i>
+          <i class="nav-icon far fa-circle text-warning"></i>
             <p>Item1</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+          <i class="nav-icon far fa-circle text-warning"></i>
             <p>Item2</p>
           </a>
         </li>

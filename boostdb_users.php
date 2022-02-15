@@ -60,12 +60,12 @@
 
 	//update
 	if (isset($_POST['update'])) {
-    $id = mysql_real_escape_string($_POST['id']);
 		$nom = mysql_real_escape_string($_POST['nom']);
 		$prenom = mysql_real_escape_string($_POST['prenom']);
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
     $datemodif=date('Y-m-d');
+    $id = mysql_real_escape_string($_POST['id']);
 
 
 		mysqli_query($db, "UPDATE zboostuser SET nom='$nom', prenom='$prenom', email='$email' , password='$password' , DateDernModif = '$datemodif' WHERE id=$id");

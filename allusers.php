@@ -1,4 +1,4 @@
-<?php  include('boostdb.php');
+<?php  include('boostdb_users.php');
 
 //recuperer la ligne pour l'update
 if (isset($_GET['edit'])) {
@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boostlab | Starter</title>
+  <title>Boostlab | Users</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -90,31 +90,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table id="myTable" class="table table-bordered table-hover">
-                  <thead>
-                      <tr>
-                          <th>Nom</th>
-                          <th>Prenom</th>
-                          <th>Email</th>
-                          <th colspan="2">Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                  <?php while ($row = mysqli_fetch_array($results)) { ?>
-                      <tr>
-                          <td><?php echo $row['nom']; ?></td>
-                          <td><?php echo $row['prenom']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                          <td>
-                              <a class="edit_btn" href="allusers.php?edit=<?php echo $row['id']; ?>">Edit</a>
-                          </td>
-                          <td>
-                              <a class="del_btn" href="boostdb.php?del=<?php echo $row['id']; ?>">Delete</a>
-                          </td>
-                      </tr>
-                      <?php } ?>
-                  </tbody>
-              </table>
+              <div class="col-7">
+                  <table id="myTable" class="table table-bordered table-hover">
+                      <thead>
+                          <tr>
+                              <th class="text-center">Nom</th>
+                              <th class="text-center">Prenom</th>
+                              <th class="text-center">Email</th>
+                              <th class="text-center" colspan="2">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      <?php while ($row = mysqli_fetch_array($results)) { ?>
+                          <tr>
+                              <td><?php echo $row['nom']; ?></td>
+                              <td><?php echo $row['prenom']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                              <td>
+                                  <a class="edit_btn" href="allusers.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                              </td>
+                              <td>
+                                  <a class="del_btn" href="boostdb.php?del=<?php echo $row['id']; ?>">Delete</a>
+                              </td>
+                          </tr>
+                          <?php } ?>
+                      </tbody>
+                  </table>
+                <div>
               <!-- general form elements -->
             <div class="card card-warning m-3">
               <div class="card-header">
@@ -123,8 +125,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <!-- form start -->
               <div id="error" class="text-danger m-3 text-bold"></div>
-              <form id="form" method="post" action="boostdb.php">
+              <form id="form_users" method="post" action="boostdb_users.php">
                 <div class="card-body">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
                   <div class="form-group">
                     <label class="form-label">Nom</label>
                     <input type="text" id="nom" name="nom" class="form-control" value="<?php echo $nom; ?>">
@@ -148,8 +151,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <?php if ($update == false): ?>
                         <button class="btn" type="submit" name="save" >Save</button>
                     <?php else: ?>
-                        <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+                        <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
                     <?php endif ?>
+                    <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
                 </div>
                 </div>
               </form>
