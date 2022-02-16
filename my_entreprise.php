@@ -105,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         Adresse
                       </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                           <form id="" method="post" action="boostdb_entreprise.php">
                       <div class="card-body">
@@ -140,8 +140,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      <form id="" method="post" action="boostdb_entreprise.php">
+                      <div class="card-body">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <div class="form-group">
+                          <label class="form-label">Telephone</label>
+                          <input type="text" id="Telephone" name="Telephone" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Site Internet</label>
+                          <input type="text" id="SiteInternet" name="SiteInternet" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Page Facebook</label>
+                          <input type="text" class="form-control" id="PageFacebook" name="PageFacebook"  value="">
+                        </div>
                       </div>
+                      <!-- /.card-body -->
+                      <div class="card-footer">
+                        <div class="input-group">
+
+                        </div>
+                      </div>
+                    </form>
+
                     </div>
                   </div>
                   <div class="accordion-item">
@@ -152,7 +174,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <form id="" method="post" action="boostdb_entreprise.php">
+                        <div class="card-body">
+                          <input type="hidden" name="id" value="<?php echo $id; ?>">
+                          <div class="form-group">
+                            <label class="form-label">Type:</label>
+                            <input type="text" id="Type" name="Type" class="form-control" value="">
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label">Capital:</label>
+                            <input type="text" id="Capital" name="Capital" class="form-control" value="">
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label">N° SIRET:</label>
+                            <input type="text" class="form-control" id="N_Siret" name="N_Siret"  value="">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Code Naf:</label>
+                            <input type="text" class="form-control" id="CodeNAF" name="CodeNAf"  value="">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">N° TVA Intra:</label>
+                            <input type="text" class="form-control" id="N_TVA_Intra" name="N_TVA_Intra"  value="">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputFile">Logo</label>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="exampleInputFile" name="ImageLogo">
+                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                              <span class="input-group-text">Upload</span>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                          <div class="input-group">
+
+                          </div>
+                        </div>
+                      </form>
                       </div>
                     </div>
                   </div>
