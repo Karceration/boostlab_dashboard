@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </table>
                 <div>
               <!-- general form elements -->
-            <div class="card card-warning m-3">
+            <div class="card card-secondary m-3">
               <div class="card-header">
                 <h3 class="card-title">Users Management</h3>
               </div>

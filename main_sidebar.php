@@ -96,45 +96,6 @@
             </li>
           </ul>
         </li>
-        <li class="nav-header">Subtitle</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-circle text-warning"></i>
-            <p>
-              Item1
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-circle text-warning"></i>
-            <p>
-              Item2
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-circle text-warning"></i>
-            <p>
-              Item3
-            </p>
-          </a>
-        </li>
-        <li class="nav-header">MISCELLANEOUS</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-          <i class="nav-icon far fa-circle text-warning"></i>
-            <p>Item1</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-          <i class="nav-icon far fa-circle text-warning"></i>
-            <p>Item2</p>
-          </a>
-        </li>
-
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
