@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>142</h3>
+                <h3>12</h3>
 
                 <p>Students</p>
               </div>
@@ -108,20 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>12</h3>
 
-                <p>Personnel</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->

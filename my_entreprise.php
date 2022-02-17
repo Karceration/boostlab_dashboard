@@ -1,8 +1,35 @@
+<?php  include('boostdb_entreprise.php');
+
+//recuperer la ligne pour l'update
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update = true;
+    $record = mysqli_query($db, "SELECT * FROM zboostentreprise WHERE id=$id");
+
+    if (count($record) == 1 ) {
+        $n = mysqli_fetch_array($record);
+        $NomEtablissement = $n['NomEtablissement'];
+        $Activité = $n['Activité'];
+        $Devise = $n['Devise'];
+        $Pays = $n['Pays'];
+        $Adresse = $n['Adresse'];
+        $CodePostal = $n['CodePostal'];
+        $Ville = $n['Ville'];
+        $Telephone = $n['Telephone'];
+        $SiteInternet = $n['SiteInternet'];
+        $PageFacebook = $n['PageFacebook'];
+        $Type = $n['Type'];
+        $Capital = $n['Capital'];
+        $N_Siret = $n['N_Siret'];
+        $CodeNAF = $n['CodeNAF'];
+        $N_TVA_intra = $n['N_TVA_intra'];
+        $id = $n ['id'];
+    }
+}
+
+?>
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -75,27 +102,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
                       <label class="form-label">Nom Etablissement</label>
-                      <input type="text" id="NomEtablissment" name="NomEtablissment" class="form-control" value="">
+                      <input type="text" id="NomEtablissment" name="NomEtablissment" class="form-control" value="<?php echo $NomEtablissement ?>">
                     </div>
                     <div class="form-group">
                       <label class="form-label">Activité</label>
-                      <input type="text" id="Activité" name="Activité" class="form-control" value="">
+                      <input type="text" id="Activité" name="Activité" class="form-control" value="<?php echo $Activité ?>">
                     </div>
                     <div class="form-group">
                       <label class="form-label">Devise</label>
-                      <input type="text" class="form-control" id="Devise" name="Devise"  value="">
+                      <input type="text" class="form-control" id="Devise" name="Devise"  value="<?php echo $Devise?>">
                     </div>
                     <div class="form-group">
                       <label class="form-label">Pays</label>
-                      <input type="text" name="Pays" id="Pays" class="form-control" value="">
+                      <input type="text" name="Pays" id="Pays" class="form-control" value="<?php echo $Pays ?>">
                     </div>
                   </div>
                   <!-- /.card-body -->
-                  <div class="card-footer">
-                    <div class="input-group">
-
-                    </div>
-                  </div>
                 </form>
 
                 <div class="accordion" id="accordionExample">
@@ -112,23 +134,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <div class="form-group">
                           <label class="form-label">Adresse</label>
-                          <input type="text" id="Adresse" name="Adresse" class="form-control" value="">
+                          <input type="text" id="Adresse" name="Adresse" class="form-control" value="<?php echo $Adresse ?>">
                         </div>
                         <div class="form-group">
                           <label class="form-label">Code Postal</label>
-                          <input type="text" id="CodePostal" name="CodePostal" class="form-control" value="">
+                          <input type="text" id="CodePostal" name="CodePostal" class="form-control" value="<?php echo  $CodePostal?>">
                         </div>
                         <div class="form-group">
                           <label class="form-label">Ville</label>
-                          <input type="text" class="form-control" id="Ville" name="Ville"  value="">
+                          <input type="text" class="form-control" id="Ville" name="Ville"  value="<?php echo  $Ville?>">
                         </div>
                       </div>
                       <!-- /.card-body -->
-                      <div class="card-footer">
-                        <div class="input-group">
-
-                        </div>
-                      </div>
                     </form>
                     </div>
                   </div>
@@ -145,23 +162,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <div class="form-group">
                           <label class="form-label">Telephone</label>
-                          <input type="text" id="Telephone" name="Telephone" class="form-control" value="">
+                          <input type="text" id="Telephone" name="Telephone" class="form-control" value="<?php echo  $Telephone?>">
                         </div>
                         <div class="form-group">
                           <label class="form-label">Site Internet</label>
-                          <input type="text" id="SiteInternet" name="SiteInternet" class="form-control" value="">
+                          <input type="text" id="SiteInternet" name="SiteInternet" class="form-control" value="<?php echo  $SiteInternet?>">
                         </div>
                         <div class="form-group">
                           <label class="form-label">Page Facebook</label>
-                          <input type="text" class="form-control" id="PageFacebook" name="PageFacebook"  value="">
+                          <input type="text" class="form-control" id="PageFacebook" name="PageFacebook"  value="<?php echo  $PageFacebook?>">
                         </div>
                       </div>
                       <!-- /.card-body -->
-                      <div class="card-footer">
-                        <div class="input-group">
-
-                        </div>
-                      </div>
                     </form>
 
                     </div>
@@ -179,25 +191,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <input type="hidden" name="id" value="<?php echo $id; ?>">
                           <div class="form-group">
                             <label class="form-label">Type:</label>
-                            <input type="text" id="Type" name="Type" class="form-control" value="">
+                            <input type="text" id="Type" name="Type" class="form-control" value="<?php echo  $Type?>">
                           </div>
                           <div class="form-group">
                             <label class="form-label">Capital:</label>
-                            <input type="text" id="Capital" name="Capital" class="form-control" value="">
+                            <input type="text" id="Capital" name="Capital" class="form-control" value="<?php echo  $Capital?>">
                           </div>
                           <div class="form-group">
                             <label class="form-label">N° SIRET:</label>
-                            <input type="text" class="form-control" id="N_Siret" name="N_Siret"  value="">
+                            <input type="text" class="form-control" id="N_Siret" name="N_Siret"  value="<?php echo  $N_Siret?>">
                           </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Code Naf:</label>
-                            <input type="text" class="form-control" id="CodeNAF" name="CodeNAf"  value="">
+                            <input type="text" class="form-control" id="CodeNAF" name="CodeNAF"  value="<?php echo  $CodeNAF?>">
                           </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">N° TVA Intra:</label>
-                            <input type="text" class="form-control" id="N_TVA_Intra" name="N_TVA_Intra"  value="">
+                            <input type="text" class="form-control" id="N_TVA_Intra" name="N_TVA_Intra"  value="<?php echo  $N_TVA_intra?>">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputFile">Logo</label>
@@ -214,11 +226,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
 
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                          <div class="input-group">
-
-                          </div>
-                        </div>
                       </form>
                       </div>
                     </div>
