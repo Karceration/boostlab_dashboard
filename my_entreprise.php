@@ -223,9 +223,19 @@ if (isset($_GET['edit'])) {
                             </div>
                           </div>
                         </div>
+                        
                         </div>
-
                         <!-- /.card-body -->
+                        <div class="card-footer">
+                          <div class="input-group">
+                            <?php if ($update == false): ?>
+                                <button class="btn" type="submit" name="save" >Save</button>
+                            <?php else: ?>
+                                <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
+                            <?php endif ?>
+                            <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
+                        </div>
+                        </div>
                       </form>
                       </div>
                     </div>
