@@ -13,8 +13,11 @@
 	$update = false;
 
 	if (isset($_POST['save'])) {
-		$Nom = $_POST['Nom'];
-    $datecre = date('Y-m-d');
+		$NomFormation = $_POST['NomFormation'];
+    $NbHeures = $_POST['NbHeures'];
+    $Prix = $_POST['Prix'];
+    $NomResponsable = $_POST['NomResponsable'];
+
 
 		mysqli_query($db, "INSERT INTO zboostformation (NomFormation,NbHeures,Prix,NomResponsable) VALUES ('$NomFormation', $NbHeures,$Prix,'$NomResponsable')");
 		$_SESSION['message'] = "course saved";
