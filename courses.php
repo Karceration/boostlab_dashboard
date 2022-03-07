@@ -1,3 +1,45 @@
+<?php
+
+ include('boostdb_formation.php');
+
+ //recuperer la ligne pour l'update1
+  if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update1 = true;
+    $record1 = mysqli_query($db, "SELECT * FROM zboostformation WHERE id=$id");
+
+    if (count($record1) == 1 ) {
+        $n = mysqli_fetch_array($record1);
+        $NomFormation= $n['NomFormation'];
+        $NbHeures = $n['NbHeures'];
+        $Prix = $n['Prix'];
+        $NomResponsable = $n['NomResponsable'];
+        $id = $n ['id'];
+    }
+  }
+
+?>
+
+ <?php
+
+  include('boostdb_type_formation.php');
+
+  //recuperer la ligne pour l'update2
+  if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update2 = true;
+    $record2 = mysqli_query($db, "SELECT * FROM zboosttypeformation WHERE id=$id");
+
+    if (count($record2) == 1 ) {
+        $n = mysqli_fetch_array($record2);
+        $Nom= $n['Nom'];
+        $id = $n ['id'];
+    }
+  }
+
+ ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -68,53 +110,136 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Email</th>
-                    <th>Tel</th>
-                    <th>Course</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 9.2</td>
-                    <td>Win 88+ / OSX.3+</td>
-                    <td>-</td>
-                    <td>A</td>
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 9.5</td>
-                    <td>Win 88+ / OSX.3+</td>
-                    <td>-</td>
-                    <td>A</td>
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera for Wii</td>
-                    <td>Wii</td>
-                    <td>-</td>
-                    <td>A</td>
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Nokia N800</td>
-                    <td>N800</td>
-                    <td>-</td>
-                    <td>A</td>
-                  </tr>
-
-
-                  </tfoot>
+                <table id="myTable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nom Formation</th>
+                            <th class="text-center">Nombre Heures</th>
+                            <th class="text-center">Prix</th>
+                            <th class="text-center">Nom Responsable</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($row = mysqli_fetch_array($results1)) { ?>
+                        <tr>
+                            <td><?php echo $row['NomFormation']; ?></td>
+                            <td><?php echo $row['NbHeures']; ?></td>
+                            <td><?php echo $row['Prix']; ?></td>
+                            <td><?php echo $row['NomResponsable']; ?></td>
+                            <td>
+                                <a class="edit_btn" href="courses.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            </td>
+                            <td>
+                                <a class="del_btn" href="boostdb_formation.php?del=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
                 </table>
+                <table id="myTable" class="table table-bordered table-hover mt-5">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Type</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php while ($row = mysqli_fetch_array($results2)) { ?>
+                        <tr>
+                            <td><?php echo $row['Nom']; ?></td>
+
+                            <td>
+                                <a class="edit_btn" href="courses.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            </td>
+                            <td>
+                                <a class="del_btn" href="boostdb_type_formation.php?del=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
+
+
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            <div class="card card-secondary m-3">
+              <div class="card-header">
+                <h3 class="card-title">Courses Management</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div id="error" class="text-danger m-3 text-bold"></div>
+              <form id="form" method="post" action="boostdb_formation.php">
+                <div class="card-body">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+                  <div class="form-group">
+                    <label class="form-label">Nom Formation : </label>
+                    <input type="text" id="NomFormation" name="NomFormation" class="form-control" value="<?php echo $NomFormation; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Nb Heures :</label>
+                    <input type="number" id="NbHeures" name="NbHeures" class="form-control" value="<?php echo $NbHeures; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Prix(DT): </label>
+                    <input type="number" class="form-control" id="Prix" name="Prix"  value="<?php echo $Prix; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Nom Responsable:</label>
+                    <input type="NomResponsable" name="NomResponsable" id="NomResponsable" class="form-control" value="<?php echo $NomResponsable; ?>">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <div class="input-group">
+                    <?php if ($update == false): ?>
+                        <button class="btn" type="submit" name="save" >Save</button>
+                    <?php else: ?>
+                        <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
+                    <?php endif ?>
+                    <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
+                </div>
+                </div>
+              </form>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <div class="card card-secondary m-3">
+              <div class="card-header">
+                <h3 class="card-title">Courses Type Management</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div id="error" class="text-danger m-3 text-bold"></div>
+              <form id="form" method="post" action="boostdb_type_formation.php">
+                <div class="card-body">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+                  <div class="form-group">
+                    <label class="form-label">Nom Type : </label>
+                    <input type="text" id="Nom" name="Nom" class="form-control" value="<?php echo $Nom; ?>">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <div class="input-group">
+                    <?php if ($update == false): ?>
+                        <button class="btn" type="submit" name="save" >Save</button>
+                    <?php else: ?>
+                        <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
+                    <?php endif ?>
+                    <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
+                </div>
+                </div>
+              </form>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
 
           </div>
           <!-- /.col -->
