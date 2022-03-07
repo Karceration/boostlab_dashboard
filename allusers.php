@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   <a class="edit_btn" href="allusers.php?edit=<?php echo $row['id']; ?>">Edit</a>
                               </td>
                               <td>
-                                  <a class="del_btn" href="boostdb.php?del=<?php echo $row['id']; ?>">Delete</a>
+                                  <a class="del_btn" href="boostdb_users.php?del=<?php echo $row['id']; ?>">Delete</a>
                               </td>
                           </tr>
                           <?php } ?>

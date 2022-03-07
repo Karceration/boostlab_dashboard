@@ -5,7 +5,7 @@ const password = document.getElementById('password')
 const form_users = document.getElementById('form_users')
 const errorElement = document.getElementById('error')
 
-form.addEventListener('submit', (e) => {
+form_users.addEventListener('submit', (e) => {
   let messages = []
 
   if (nom.value === '' || nom.value == null) {
