@@ -1,25 +1,24 @@
-
 <?php
- include('boostdb_formateur.php');
 
- //recuperer la ligne pour l'update
-if (isset($_GET['edit'])) {
-  $id = $_GET['edit'];
+  include('boostdb_portfolio.php');
 
-  $update = true;
-  $record = mysqli_query($db, "SELECT * FROM zboostformateur WHERE id=$id");
 
-  if (count($record) == 1 ) {
-      $n = mysqli_fetch_array($record);
-      $Nom= $n['Nom'];
-      $Prenom = $n['Prenom'];
-      $Specialite = $n['Specialite'];
-      $Email = $n['Email'];
-      $Adresse = $n['Adresse'];
 
-      $id = $n ['id'];
+  //recuperer la ligne pour l'update
+  if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+
+    $update = true;
+    $record = mysqli_query($db, "SELECT * FROM zboostportfolio WHERE id=$id");
+
+    if (count() == 1 ) {
+        $n = mysqli_fetch_array($record);
+        $Nom= $n['Nom'];
+        $Domaine= $n['Domaine'];
+        $id = $n ['id'];
+    }
   }
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boostlab | Trainers</title>
+  <title>Boostlab | Portfolio</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -69,12 +68,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Trainers</h1>
+            <h1>Portfolios</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Trainers</li>
+              <li class="breadcrumb-item active">Portfolios</li>
             </ol>
           </div>
         </div>
@@ -88,54 +87,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All Trainers</h3>
+                <h3 class="card-title">All Portfolios</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="myTable" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Nom</th>
-                            <th class="text-center">Prenom</th>
-                            <th class="text-center">Specialite</th>
-                            <th class="text-center">Date de Naissance</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Adresse</th>
-                            <th class="text-center" colspan="2">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php while ($row = mysqli_fetch_array($results)) { ?>
-                        <tr>
+                  <thead>
+                      <tr>
+                          <th class="text-center">Nom</th>
+                          <th class="text-center">Domaine</th>
+                          <th class="text-center" colspan="2">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <?php while ($row = mysqli_fetch_array($results)) { ?>
+                      <tr>
                           <td><?php echo $row['Nom']; ?></td>
-                          <td><?php echo $row['Prenom']; ?></td>
-                          <td><?php echo $row['Specialite']; ?></td>
-                          <td><?php echo $row['DateDeNaissance']; ?></td>
-                          <td><?php echo $row['Email']; ?></td>
-                          <td><?php echo $row['Adresse']; ?></td>
+                          <td><?php echo $row['Domaine']; ?></td>
                           <td>
-                              <a class="edit_btn" href="trainers.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                              <a class="edit_btn" href="allportfolios.php?edit=<?php echo $row['id']; ?>">Edit</a>
                           </td>
                           <td>
-                              <a class="del_btn" href="boostdb_formateur.php?del=<?php echo $row['id']; ?>">Delete</a>
+                              <a class="del_btn" href="boostdb_portfolio.php?del=<?php echo $row['id']; ?>">Delete</a>
                           </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
+                      </tr>
+                      <?php } ?>
+                  </tbody>
                 </table>
+
+
+
+
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <!-- /.card -->
             <div class="card card-secondary m-3">
               <div class="card-header">
-                <h3 class="card-title">Trainers Management</h3>
+                <h3 class="card-title">Portfolio Management</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <div id="error" class="text-danger m-3 text-bold"></div>
-              <form id="form" method="post" action="boostdb_formateur.php">
+              <form id="form" method="post" action="boostdb_portfolio.php">
                 <div class="card-body">
                   <input type="hidden" name="id" value="<?php echo $id; ?>">
                   <div class="form-group">
@@ -143,24 +137,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="text" id="Nom" name="Nom" class="form-control" value="<?php echo $Nom; ?>">
                   </div>
                   <div class="form-group">
-                    <label class="form-label">Prenom: </label>
-                    <input type="text" id="Prenom" name="Prenom" class="form-control" value="<?php echo $Prenom; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Specialite :</label>
-                    <input type="text" id="Specialite" name="Specialite" class="form-control" value="<?php echo $Specialite; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Date De Naissance: </label>
-                    <input type="text" class="form-control" id="DateDeNaissance" name="DateDeNaissance"  value="<?php echo $DateDeNaissance; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Email:</label>
-                    <input type="text" name="Email" id="Email" class="form-control" value="<?php echo $Email; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Adresse:</label>
-                    <input type="text" name="Adresse" id="Adresse" class="form-control" value="<?php echo $Adresse; ?>">
+                    <label class="form-label">Domaine:</label>
+                    <input type="text" id="Domaine" name="Domaine" class="form-control" value="<?php echo $Domaine; ?>">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -178,6 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
               <!-- /.card-body -->
+            </div>
 
           </div>
           <!-- /.col -->

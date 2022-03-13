@@ -1,32 +1,5 @@
-<?php  include('boostdb_entreprise.php');
-
-//recuperer la ligne pour l'update
-if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
-
-    $update = true;
-    $record = mysqli_query($db, "SELECT * FROM zboostentreprise WHERE id=$id");
-
-    if (count($record) == 1 ) {
-        $n = mysqli_fetch_array($record);
-        $NomEtablissement = $n['NomEtablissement'];
-        $Activité = $n['Activité'];
-        $Devise = $n['Devise'];
-        $Pays = $n['Pays'];
-        $Adresse = $n['Adresse'];
-        $CodePostal = $n['CodePostal'];
-        $Ville = $n['Ville'];
-        $Telephone = $n['Telephone'];
-        $SiteInternet = $n['SiteInternet'];
-        $PageFacebook = $n['PageFacebook'];
-        $Type = $n['Type'];
-        $Capital = $n['Capital'];
-        $N_Siret = $n['N_Siret'];
-        $CodeNAF = $n['CodeNAF'];
-        $N_TVA_intra = $n['N_TVA_intra'];
-        $id = $n ['id'];
-    }
-}
+<?php
+ include('boostdb_entreprise.php');
 
 ?>
 <!DOCTYPE html>
@@ -57,9 +30,16 @@ if (isset($_GET['edit'])) {
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <script defer src="validation_user.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
+<?php if (isset($_SESSION['message'])): ?>
+	<div class="msg">
+		<?php
+			echo $_SESSION['message'];
+			unset($_SESSION['message']);
+		?>
+	</div>
+<?php endif ?>
 <div class="wrapper">
 
   <?php include ('navbar.php')?>
@@ -91,161 +71,89 @@ if (isset($_GET['edit'])) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
+          <div class="card card-secondary m-3">
               <div class="card-header">
-                <h3 class="card-title">Configuration Entreprise</h3>
+                <h3 class="card-title">Configuration entreprise</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <form id="form" method="post" action="boostdb_entreprise.php">
-                  <div class="card-body">
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                    <div class="form-group">
-                      <label class="form-label">Nom Etablissement</label>
-                      <input type="text" id="NomEtablissment" name="NomEtablissment" class="form-control" value="<?php echo $NomEtablissement ?>">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Activité</label>
-                      <input type="text" id="Activité" name="Activité" class="form-control" value="<?php echo $Activité ?>">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Devise</label>
-                      <input type="text" class="form-control" id="Devise" name="Devise"  value="<?php echo $Devise?>">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Pays</label>
-                      <input type="text" name="Pays" id="Pays" class="form-control" value="<?php echo $Pays ?>">
-                    </div>
+              <!-- form start -->
+              <div id="error" class="text-danger m-3 text-bold"></div>
+              <form id="form" method="post" action="boostdb_entreprise.php">
+                <div class="card-body">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+                  <div class="form-group">
+                    <label class="form-label">Nom Etablissement</label>
+                    <input type="text" id="NomEtablissement" name="NomEtablissement" class="form-control" value="<?php echo $NomEtablissement; ?>">
                   </div>
-                  <!-- /.card-body -->
-                </form>
-
-                <div class="accordion" id="accordionExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Adresse
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                          <form id="" method="post" action="boostdb_entreprise.php">
-                      <div class="card-body">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <div class="form-group">
-                          <label class="form-label">Adresse</label>
-                          <input type="text" id="Adresse" name="Adresse" class="form-control" value="<?php echo $Adresse ?>">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-label">Code Postal</label>
-                          <input type="text" id="CodePostal" name="CodePostal" class="form-control" value="<?php echo  $CodePostal?>">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-label">Ville</label>
-                          <input type="text" class="form-control" id="Ville" name="Ville"  value="<?php echo  $Ville?>">
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                    </form>
-                    </div>
+                  <div class="form-group">
+                    <label class="form-label">Activite</label>
+                    <input type="text" id="Activite" name="Activite" class="form-control" value="<?php echo $Activite; ?>">
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Coordonnées
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                      <form id="" method="post" action="boostdb_entreprise.php">
-                      <div class="card-body">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <div class="form-group">
-                          <label class="form-label">Telephone</label>
-                          <input type="text" id="Telephone" name="Telephone" class="form-control" value="<?php echo  $Telephone?>">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-label">Site Internet</label>
-                          <input type="text" id="SiteInternet" name="SiteInternet" class="form-control" value="<?php echo  $SiteInternet?>">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-label">Page Facebook</label>
-                          <input type="text" class="form-control" id="PageFacebook" name="PageFacebook"  value="<?php echo  $PageFacebook?>">
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                    </form>
-
-                    </div>
+                  <div class="form-group">
+                    <label class="form-label">Devise</label>
+                    <input type="text" class="form-control" id="Devise" name="Devise"  value="<?php echo $Devise; ?>">
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Information sur l'entreprise
-                      </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <form id="" method="post" action="boostdb_entreprise.php">
-                        <div class="card-body">
-                          <input type="hidden" name="id" value="<?php echo $id; ?>">
-                          <div class="form-group">
-                            <label class="form-label">Type:</label>
-                            <input type="text" id="Type" name="Type" class="form-control" value="<?php echo  $Type?>">
-                          </div>
-                          <div class="form-group">
-                            <label class="form-label">Capital:</label>
-                            <input type="text" id="Capital" name="Capital" class="form-control" value="<?php echo  $Capital?>">
-                          </div>
-                          <div class="form-group">
-                            <label class="form-label">N° SIRET:</label>
-                            <input type="text" class="form-control" id="N_Siret" name="N_Siret"  value="<?php echo  $N_Siret?>">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Code Naf:</label>
-                            <input type="text" class="form-control" id="CodeNAF" name="CodeNAF"  value="<?php echo  $CodeNAF?>">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">N° TVA Intra:</label>
-                            <input type="text" class="form-control" id="N_TVA_Intra" name="N_TVA_Intra"  value="<?php echo  $N_TVA_intra?>">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputFile">Logo</label>
-                          <div class="input-group">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="exampleInputFile" name="ImageLogo">
-                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                              <span class="input-group-text">Upload</span>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                          <div class="input-group">
-                            <?php if ($update == false): ?>
-                                <button class="btn" type="submit" name="save" >Save</button>
-                            <?php else: ?>
-                                <button class="btn" type="submit" name="update" style="background: #ffe599;" >update</button>
-                            <?php endif ?>
-                            <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
-                        </div>
-                        </div>
-                      </form>
-                      </div>
-                    </div>
+                  <div class="form-group">
+                    <label class="form-label">Pays</label>
+                    <input type="text" name="Pays" id="Pays" class="form-control" value="<?php echo $Pays; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Adresse</label>
+                    <input type="text" id="Adresse" name="Adresse" class="form-control" value="<?php echo $Adresse; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Code Postal</label>
+                    <input type="number" id="CodePostal" name="CodePostal" class="form-control" value="<?php echo $CodePostal; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="Ville" name="Ville"  value="<?php echo $Ville; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Telephone</label>
+                    <input type="text" id="Telephone" name="Telephone" class="form-control" value="<?php echo $Telephone; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Site Internet</label>
+                    <input type="text" id="SiteInternet" name="SiteInternet" class="form-control" value="<?php echo $SiteInternet; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Page Facebook</label>
+                    <input type="text" class="form-control" id="PageFacebook" name="PageFacebook"  value="<?php echo $PageFacebook; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Type:</label>
+                    <input type="text" id="Type" name="Type" class="form-control" value="<?php echo $Type; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Capital:</label>
+                    <input type="number" id="Capital" name="Capital" class="form-control" value="<?php echo $Capital; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">N° SIRET:</label>
+                    <input type="number" class="form-control" id="N_Siret" name="N_Siret"  value="<?php echo $N_Siret; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Code Naf:</label>
+                    <input type="number" class="form-control" id="CodeNAF" name="CodeNAF"  value="<?php echo $CodeNAF; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">N° TVA Intra:</label>
+                    <input type="number" class="form-control" id="N_TVA_intra" name="N_TVA_intra"  value="<?php echo $N_TVA_intra; ?>">
                   </div>
                 </div>
-                <div>
-              <!-- general form elements -->
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <div class="input-group">
+                    <button class="btn" type="submit" name="save" >Save</button>
+                    <button class="btn" type="reset" name="reset" value="Reset" >Clear</button>
+                  </div>
+                </div>
+              </form>
 
-            <!-- /.card -->
-
+              </div>
+              <!-- /.card-body -->
+            </div>
           </div>
           <!-- /.col -->
         </div>
@@ -286,9 +194,7 @@ if (isset($_GET['edit'])) {
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->

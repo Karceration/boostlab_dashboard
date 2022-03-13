@@ -96,6 +96,35 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item menu-closed">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user-tie"></i>
+            <p>
+              Formateurs
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="trainers.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion des formateurs</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="allportfolios.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion des portfolios </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion des projets/ImgProjets</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

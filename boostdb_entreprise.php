@@ -1,31 +1,34 @@
 <?php
-	session_start();
+
 
     //connection
-	$db = mysqli_connect('localhost', 'root', '', 'boostlab');
+    $db = mysqli_connect('localhost', 'root', '', 'boostlab');
 
-	// initialisation
-	$NomEtablissement = "";
-	$Activité = "";
-  $Devise = "";
-  $Pays = "";
-  $Adresse="";
-  $CodePostal="";
-  $Ville = "";
-  $Telephone = "";
-  $SiteInternet = "";
-  $PageFacebook = "";
-  $Type="";
-  $Capital = "";
-  $N_Siret = "";
-  $CodeNAF= "";
-  $N_TVA_intra = "";
-	$id = 0;
-	$update = false;
+    // initialisation
+    $NomEtablissement = "";
+    $Activite = "";
+    $Devise = "";
+    $Pays = "";
+    $Adresse="";
+    $CodePostal="";
+    $Ville = "";
+    $Telephone = "";
+    $SiteInternet = "";
+    $PageFacebook = "";
+    $Type="";
+    $Capital = "";
+    $N_Siret = "";
+    $CodeNAF= "";
+    $N_TVA_intra = "";
+    $id = 0;
+    $update = false;
+
+
+
 
 	if (isset($_POST['save'])) {
 		$NomEtablissement = $_POST['NomEtablissement'];
-		$Activité = $_POST['Activité'];
+		$Activite = $_POST['Activite'];
     $Devise = $_POST['Devise'];
 		$Pays = $_POST['Pays'];
 		$Adresse = $_POST['Adresse'];
@@ -42,30 +45,27 @@
 
 
 
+    mysqli_query($db, "INSERT INTO zboostentreprise (NomEtablissement , Activite , Devise , Pays , Adresse, CodePostal, Ville , Telephone , SiteInternet , PageFacebook , Type , Capital , N_Siret , CodeNAF , N_TVA_intra) VALUES ('$NomEtablissement' , '$Activite' , '$Devise' , '$Pays' , '$Adresse', '$CodePostal', '$Ville' , '$Telephone' , '$SiteInternet' , '$PageFacebook' , '$Type' , $Capital , $N_Siret , $CodeNAF , $N_TVA_intra)");
 
 
-		mysqli_query($db, "INSERT INTO zboostentreprise (NomEtablissement , Activité , Devise , Pays , Adresse, CodePostal, Ville , Telephone , SiteInternet , PageFacebook , Type , Capital , N_Siret , CodeNAF , N_TVA_intra) VALUES ('$NomEtablissement' , '$Activité' , '$Devise' , '$Pays' , '$Adresse', '$CodePostal', '$Ville' , '$Telephone' , '$SiteInternet' , '$PageFacebook' , '$Type' , '$Capital' , '$N_Siret' , '$CodeNAF' , '$N_TVA_intra')");
+
+
 
 		$_SESSION['message'] = "entreprise saved";
-		header('location: my_entreprise.php');
+    header('location: my_entreprise.php');
+
 	}
   /*
-
-
   //PAGINATION START
   //Get the current page number
-
   if (isset($_GET['pageno'])) {
     $pageno = $_GET['pageno'];
   } else {
     $pageno = 1;
   }
-
   $no_of_records_per_page = 4;
   $offset = ($pageno-1) * $no_of_records_per_page;
-
   $total_pages_sql = "SELECT COUNT(*) FROM zboostuser";
-
   $total_pages = ceil(12 / $no_of_records_per_page);
   */
 
@@ -81,7 +81,7 @@
 	//update
 	if (isset($_POST['update'])) {
 		$NomEtablissement = mysql_real_escape_string($_POST['NomEtablissement']);
-		$Activité = mysql_real_escape_string($_POST['Activité']);
+		$Activite = mysql_real_escape_string($_POST['Activite']);
     $Devise = mysql_real_escape_string($_POST['Devise']);
 		$Pays = mysql_real_escape_string($_POST['Pays']);
 		$Adresse = mysql_real_escape_string($_POST['Adresse']);
@@ -100,7 +100,7 @@
     $id = mysql_real_escape_string($_POST['id']);
 
 
-		mysqli_query($db, "UPDATE zboostentreprise SET NomEtablissement='$NomEtablissement' , Activité='$Activité' , Devise='$Devise' , Pays='$Pays' , Adresse='$Adresse', CodePostal='$CodePostal', Ville='$Ville' , Telephone='$Telephone' , SiteInternet='$SiteInternet' , PageFacebook='$PageFacebook' , Type='$Type' , Capital='$Capital' , N_Siret='$N_Siret' , CodeNAF='$CodeNAF' , N_TVA_intra='$N_TVA_intra' WHERE id=$id");
+		mysqli_query($db, "UPDATE zboostentreprise SET NomEtablissement='$NomEtablissement' , Activite='$Activite' , Devise='$Devise' , Pays='$Pays' , Adresse='$Adresse', CodePostal='$CodePostal', Ville='$Ville' , Telephone='$Telephone' , SiteInternet='$SiteInternet' , PageFacebook='$PageFacebook' , Type='$Type' , Capital='$Capital' , N_Siret='$N_Siret' , CodeNAF='$CodeNAF' , N_TVA_intra='$N_TVA_intra' WHERE id=$id");
 		$_SESSION['message'] = "entreprise updated!";
 		header('location: my_entreprise.php');
 	}
@@ -109,7 +109,8 @@
 
 	if (isset($_GET['del'])) {
 		$id = $_GET['del'];
-		mysqli_query($db, "DELETE FROM zboostentreprise WHERE id=$id");
+		mysqli_query($sb, "DELETE FROM zboostentreprise WHERE id=$id");
+
 		$_SESSION['message'] = "entreprise deleted!";
 		header('location: my_entreprise.php');
 	}
