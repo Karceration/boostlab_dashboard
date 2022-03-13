@@ -1,4 +1,12 @@
 <?php
+   function randomString($n){
+     $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+     $str = '';
+     for ($i = 0 ; $i< $n ; $i++){
+       $index = rand(0,strlen($characters)-1);
+       $str .= $characters[$index];
+     }
+   }
 
 
     //connection
@@ -20,6 +28,7 @@
     $N_Siret = "";
     $CodeNAF= "";
     $N_TVA_intra = "";
+    $image_logo="";
     $id = 0;
     $update = false;
 
@@ -43,9 +52,21 @@
     $CodeNAF = $_POST['CodeNAF'];
 		$N_TVA_intra = $_POST['N_TVA_intra'];
 
+    $image_logo = $_FILES['image_logo'];
+    $imagepath="";
+
+    if ($image_logo) {
+
+      $imagepath='uploads_logo/'.randomString(8).$image_logo['name'];
+      mkdir(dirname($imagepath));
+      move_uploaded_file($image_logo['tmp_name'],$imagepath);
+    }
 
 
-    mysqli_query($db, "INSERT INTO zboostentreprise (NomEtablissement , Activite , Devise , Pays , Adresse, CodePostal, Ville , Telephone , SiteInternet , PageFacebook , Type , Capital , N_Siret , CodeNAF , N_TVA_intra) VALUES ('$NomEtablissement' , '$Activite' , '$Devise' , '$Pays' , '$Adresse', '$CodePostal', '$Ville' , '$Telephone' , '$SiteInternet' , '$PageFacebook' , '$Type' , $Capital , $N_Siret , $CodeNAF , $N_TVA_intra)");
+
+
+
+    mysqli_query($db, "INSERT INTO zboostentreprise (NomEtablissement , Activite , Devise , Pays , Adresse, CodePostal, Ville , Telephone , SiteInternet , PageFacebook , Type , Capital , N_Siret , CodeNAF , N_TVA_intra , image_logo) VALUES ('$NomEtablissement' , '$Activite' , '$Devise' , '$Pays' , '$Adresse', '$CodePostal', '$Ville' , '$Telephone' , '$SiteInternet' , '$PageFacebook' , '$Type' , $Capital , $N_Siret , $CodeNAF , $N_TVA_intra , '$imagepath')");
 
 
 

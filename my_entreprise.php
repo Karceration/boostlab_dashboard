@@ -78,7 +78,7 @@
               <!-- /.card-header -->
               <!-- form start -->
               <div id="error" class="text-danger m-3 text-bold"></div>
-              <form id="form" method="post" action="boostdb_entreprise.php">
+              <form id="form" method="post" action="boostdb_entreprise.php" enctype="multipart/form-data">
                 <div class="card-body">
                   <input type="hidden" name="id" value="<?php echo $id; ?>">
                   <div class="form-group">
@@ -140,6 +140,10 @@
                   <div class="form-group">
                     <label class="form-label">N° TVA Intra:</label>
                     <input type="number" class="form-control" id="N_TVA_intra" name="N_TVA_intra"  value="<?php echo $N_TVA_intra; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Image Logo:</label><br>
+                    <input type="file" name="image_logo">
                   </div>
                 </div>
                 <!-- /.card-body -->
