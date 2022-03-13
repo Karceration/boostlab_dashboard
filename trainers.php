@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <!-- form start -->
               <div id="error" class="text-danger m-3 text-bold"></div>
-              <form id="form" method="post" action="boostdb_formateur.php">
+              <form id="form" method="post" action="boostdb_formateur.php" enctype="multipart/form-data">
                 <div class="card-body">
                   <input type="hidden" name="id" value="<?php echo $id; ?>">
                   <div class="form-group">
@@ -161,6 +161,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="form-group">
                     <label class="form-label">Adresse:</label>
                     <input type="text" name="Adresse" id="Adresse" class="form-control" value="<?php echo $Adresse; ?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Image Formateur:</label><br>
+                    <input type="file" name="image_formateur">
                   </div>
                 </div>
                 <!-- /.card-body -->

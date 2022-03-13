@@ -1,5 +1,14 @@
 <?php
-	session_start();
+
+  function randomString($n){
+    $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $str = '';
+    for ($i = 0 ; $i< $n ; $i++){
+      $index = rand(0,strlen($characters)-1);
+      $str .= $characters[$index];
+    }
+  }
+
 
     //connection
 	$db = mysqli_connect('localhost', 'root', '', 'boostlab');
@@ -11,6 +20,7 @@
   $DateDeNaissance="";
   $Email="";
   $Adresse="";
+  $image_formateur="";
 	$id = 0;
 	$update = false;
 
@@ -23,8 +33,20 @@
     $Email = $_POST['Email'];
     $Adresse = $_POST['Adresse'];
 
+    $image_formateur = $_FILES['image_formateur'];
+    $imagepath="";
 
-    mysqli_query($db, "INSERT INTO zboostformateur (Nom , Prenom , Specialite , DateDeNaissance , Email, Adresse ) VALUES ('$Nom', '$Prenom','$Specialite','$DateDeNaissance','$Email','$Adresse')");
+    if ($image_formateur) {
+
+      $imagepath='uploads_trainers/'.randomString(8).$image_formateur['name'];
+      mkdir(dirname($imagepath));
+      move_uploaded_file($image_formateur['tmp_name'],$imagepath);
+    }
+
+
+
+
+    mysqli_query($db, "INSERT INTO zboostformateur (Nom , Prenom , Specialite , DateDeNaissance , Email, Adresse , image_formateur ) VALUES ('$Nom', '$Prenom','$Specialite','$DateDeNaissance','$Email','$Adresse','$imagepath')");
 
 
 		$_SESSION['message'] = "trainer saved";
