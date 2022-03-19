@@ -94,6 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <table id="myTable" class="table table-bordered table-hover">
                   <thead>
                       <tr>
+                          <th class="text-center">id</th>
                           <th class="text-center">Nom</th>
                           <th class="text-center">Domaine</th>
                           <th class="text-center" colspan="2">Action</th>
@@ -102,6 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tbody>
                   <?php while ($row = mysqli_fetch_array($results)) { ?>
                       <tr>
+                          <td><?php echo $row['id']; ?></td>
                           <td><?php echo $row['Nom']; ?></td>
                           <td><?php echo $row['Domaine']; ?></td>
                           <td>
