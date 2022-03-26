@@ -117,6 +117,40 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item menu-closed">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-coins"></i>
+            <p>
+              Trésorie
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="Caisse.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion de Caisse</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-closed">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-stamp"></i>
+            <p>
+              Certifications
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="Certifications.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion des Certifications</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
