@@ -5,7 +5,7 @@
  //recuperer la ligne pour l'update1
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    
+
     $update = true;
     $record = mysqli_query($db, "SELECT * FROM zboostcertificat WHERE id=$id");
 
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <th class="text-center">Formateur</th>
                             <th class="text-center">Etudiant</th>
                             <th class="text-center">Date Fin</th>
-                            <th class="text-center" colspan="2">Action</th>
+                            <th class="text-center" colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,6 +113,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </td>
                             <td>
                                 <a class="del_btn" href="boostdb_certifications.php?del=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
+                            <td>
+                                <a href="CertGenerator.php">Generate</a>
                             </td>
                         </tr>
                         <?php } ?>
