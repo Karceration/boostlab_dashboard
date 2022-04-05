@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
   imagejpeg($image,"Certificates/Cert.jpg");
   imagedestroy($image);
   echo "created succesfully";
+  header("CertPage.php");
 }
 ?>
 <!DOCTYPE html>
