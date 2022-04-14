@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   imagejpeg($image,"Certificates/Cert.jpg");
   imagedestroy($image);
   echo "created succesfully";
-  
+
 }
 ?>
 <!DOCTYPE html>
@@ -112,7 +112,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="card-footer">
                   <div class="input-group">
                         <button class="btn" type="submit" name="submit" >Generate</button>
-                        <a href="CertPage.php" class="p-3">View</a>
+                        <a href="CertPage.php" class="p-3 text-secondary">View</a>
                 </div>
                 </div>
               </form>
