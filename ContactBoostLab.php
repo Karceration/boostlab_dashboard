@@ -89,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <textarea id="inputMessage" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Send message">
+                <a href="mailto:boostcom.tn@gmail.com"><input type="submit" class="btn btn-primary" value="Send message"></a>
               </div>
             </div>
           </div>

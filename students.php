@@ -10,7 +10,7 @@ if (isset($_GET['edit'])) {
     if (count($record) == 1 ) {
         $n = mysqli_fetch_array($record);
         $name = $n['name'];
-        $address = $n['address'];
+        $Email = $n['Email'];
         $id = $n ['id'];
     }
 }
@@ -95,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <thead>
                       <tr>
                           <th>Name</th>
-                          <th>Adress</th>
+                          <th>Email</th>
                           <th colspan="2">Action</th>
                       </tr>
                   </thead>
@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <?php while ($row = mysqli_fetch_array($results)) { ?>
                       <tr>
                           <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['address']; ?></td>
+                    <td><?php echo $row['Email']; ?></td>
                           <td>
                               <a class="edit_btn" href="students.php?edit=<?php echo $row['id']; ?>">Edit</a>
                           </td>
@@ -133,8 +133,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
               </div>
               <div class="input-group m-3">
-                <label class="form-label">Address</label>
-                <input type="text" name="address" class="form-control" value="<?php echo $address; ?>">
+                <label class="form-label">Email</label>
+                <input type="text" name="Email" class="form-control" value="<?php echo $Email; ?>">
               </div>
               <div class="input-group">
 

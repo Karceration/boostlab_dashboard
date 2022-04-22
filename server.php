@@ -6,19 +6,19 @@
 
 	// initialisation
 	$name = "";
-	$address = "";
+	$Email = "";
 	$id = 0;
 	$update = false;
 
 	if (isset($_POST['save'])) {
 		$name = $_POST['name'];
-		$address = $_POST['address'];
+		$Email = $_POST['Email'];
 
-		mysqli_query($db, "INSERT INTO info (name, address) VALUES ('$name', '$address')");
-		$_SESSION['message'] = "Address saved";
+		mysqli_query($db, "INSERT INTO info (name, Email) VALUES ('$name', '$Email')");
+		$_SESSION['message'] = "Student saved";
 		header('location: students.php');
 	}
-	
+
 
   //PAGINATION START
   //Get the current page number
@@ -48,12 +48,12 @@
 	//update
 	if (isset($_POST['update'])) {
 		$name = mysql_real_escape_string($_POST['name']);
-		$address = mysql_real_escape_string($_POST['address']);
+		$Email = mysql_real_escape_string($_POST['Email']);
 		$id = mysql_real_escape_string($_POST['id']);
 
 
-		mysqli_query($db, "UPDATE info SET name='$name', address='$address' WHERE id=$id");
-		$_SESSION['message'] = "Address updated!";
+		mysqli_query($db, "UPDATE info SET name='$name', Email='$Email' WHERE id=$id");
+		$_SESSION['message'] = "Student updated!";
 		header('location: students.php');
 	}
 
@@ -62,7 +62,7 @@
 	if (isset($_GET['del'])) {
 		$id = $_GET['del'];
 		mysqli_query($db, "DELETE FROM info WHERE id=$id");
-		$_SESSION['message'] = "Address deleted!";
+		$_SESSION['message'] = "Student deleted!";
 		header('location: students.php');
 	}
 
